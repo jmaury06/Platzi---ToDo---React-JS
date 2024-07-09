@@ -1,0 +1,24 @@
+.create-task-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  border: 0;
+
+  background-color: cyan;
+  box-shadow: 4px;
+
+  font-size: 40px;
+  font-weight: 800;
+  color: white;
+
+  cursor: pointer;
+  transition: transform 1s;
+}
+
+.create-task-button:hover {
+  transform: rotate(360deg);
+}
