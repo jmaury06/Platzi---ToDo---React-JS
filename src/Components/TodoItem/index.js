@@ -3,7 +3,7 @@ import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
 
 function TodoItem({ index, text, completed, removeTask, taskCompleted }) {
   return (
-    <li key={index}>
+    <li key={index} className='wrap-todo'>
       <span className={`todo-state ${completed ? 'completed' : ''}`} onClick={() => taskCompleted(index)}>
         {completed ? <MdRadioButtonChecked /> : <MdRadioButtonUnchecked />}
       </span>

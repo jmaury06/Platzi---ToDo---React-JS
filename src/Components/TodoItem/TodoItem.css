@@ -1,4 +1,4 @@
-li {
+.wrap-todo {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -12,7 +12,7 @@ li {
   padding: 10px;
 }
 
-li:last-child {
+.wrap-todo:last-child {
   margin-bottom: 0 !important;
 }
 
@@ -55,4 +55,13 @@ li:last-child {
 
 .todo-close:hover {
   color: black;
+}
+
+/* Skeleton */
+.styleSkeleton {
+  display: flex;
+  flex-direction: column;
+  opacity: 0.5;
+
+  margin-bottom: 0px;
 }

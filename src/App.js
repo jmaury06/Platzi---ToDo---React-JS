@@ -1,63 +1,69 @@
-import CreateTodoButton from './Components/CreateTodoButton';
-import TodoItem from './Components/TodoItem';
-import TodoCounter from './Components/TodoCounter';
-import TodoList from './Components/TodoList';
-import TodoSearch from './Components/TodoSearch';
-import Modal from './Components/Modal';
 import './Components/layout.css'
 import { useState } from 'react';
+import useLocalStorage from './Hooks/useLocalStorage';
+import AppUI from './AppUI';
+
+// const DEFAULTTODOS = [
+//   { text: 'learn english', completed: false },
+//   { text: 'learn frontend', completed: false },
+//   { text: 'learn backend', completed: false },
+//   { text: 'learn loquesea', completed: true },
+//   { text: 'learn kitchen', completed: false },
+// ]
+
+// localStorage.setItem('TODOS_V1', DEFAULTTODOS)
+// localStorage.removeItem('TODOS_V1')
 
 function App() {
-  const [todoList, setTodoList] = useState([])
+
+  const nameItem = ('TODOS_V1')
+
+  const { item: todos, saveItem: setTodos, loading, error } = useLocalStorage(nameItem, [])
   const [openModal, setIsModalOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
-  const completedTodos = todoList.filter(item => item.completed).length
+  const completedTodos = todos.filter(item => item.completed).length
+  const totalTodos = todos.length
 
   const addNewTodo = (newTodo) => {
-    const newArray = [...todoList, newTodo]
-    setTodoList(newArray)
+    const newArray = [...todos, newTodo]
+    setTodos(newArray)
     setIsModalOpen(false);
   };
 
   const removeTodo = (value) => {
-    const copyTodoList = [...todoList]
+    const copyTodoList = [...todos]
     const newArray = copyTodoList.filter(item => item.text !== value)
-    setTodoList(newArray);
+    setTodos(newArray);
     setIsModalOpen(false);
   };
 
   const toggleComplete = (index) => {
-    const copyTodoList = [...todoList]
+    const copyTodoList = [...todos]
     copyTodoList[index].completed = !copyTodoList[index].completed;
-    setTodoList(copyTodoList);
+    setTodos(copyTodoList);
   };
 
-  const searchedTodos = todoList.filter(todo => {
+  const searchedTodos = todos.filter(todo => {
     const todoText = todo.text.toLowerCase()
     const searchText = searchValue.toLowerCase()
     return todoText.includes(searchText.toLowerCase())
   })
 
   return (
-    <>
-      <TodoCounter completed={completedTodos} total={todoList.length} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-      <TodoList>
-        {searchedTodos.length ? searchedTodos.map((todo, index) => {
-          const { text, completed } = todo
-          return (
-            <TodoItem
-              index={index}
-              text={text}
-              completed={completed}
-              removeTask={removeTodo}
-              taskCompleted={toggleComplete} />
-          )
-        }) : todoList.length ? 'No se encontraron más resultados' : 'Please, create a new task'}
-      </TodoList>
-      {openModal && <Modal addTodo={addNewTodo} onClose={() => setIsModalOpen(false)} />}
-      <CreateTodoButton openModal={setIsModalOpen} />
-    </>
+    <AppUI
+      loading={loading}
+      error={error}
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      removeTodo={removeTodo}
+      toggleComplete={toggleComplete}
+      openModal={openModal}
+      addNewTodo={addNewTodo}
+      setIsModalOpen={setIsModalOpen}
+    />
   );
 }
 
