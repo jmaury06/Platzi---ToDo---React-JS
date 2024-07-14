@@ -1,8 +1,11 @@
+import { useContext } from 'react'
 import './CreateTodoButton.css'
+import { AppContext } from '../../Context'
 
-function CreateTodoButton({ openModal }) {
+function CreateTodoButton() {
+  const { setIsModalOpen } = useContext(AppContext)
   return (
-    <button className='create-task-button' onClick={() => openModal(true)}>+</button>
+    <button className='create-task-button' onClick={() => setIsModalOpen(true)}>+</button>
   )
 }
 

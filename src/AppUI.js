@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import TodoCounter from './Components/TodoCounter'
 import TodoSearch from './Components/TodoSearch'
 import TodoList from './Components/TodoList'
@@ -8,25 +8,14 @@ import CreateTodoButton from './Components/CreateTodoButton'
 import TodoSkeleton from './Components/TodoItem/TodoSkeleton'
 import TodoError from './Components/TodoItem/TodoError'
 import EmptyTodos from './Components/TodoItem/EmptyTodos'
+import { AppContext } from './Context'
 
-const AppUI = ({
-  loading,
-  error,
-  completedTodos,
-  totalTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  removeTodo,
-  toggleComplete,
-  openModal,
-  addNewTodo,
-  setIsModalOpen
-}) => {
+const AppUI = () => {
+  const { openModal, addNewTodo, setIsModalOpen, loading, error, searchedTodos, removeTodo, toggleComplete } = useContext(AppContext)
   return (
     <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      <TodoCounter />
+      <TodoSearch />
       <TodoList>
         {loading && <TodoSkeleton />}
         {error && <TodoError />}
@@ -44,7 +33,7 @@ const AppUI = ({
         })}
       </TodoList>
       {openModal && <Modal addTodo={addNewTodo} onClose={() => setIsModalOpen(false)} />}
-      <CreateTodoButton openModal={setIsModalOpen} />
+      <CreateTodoButton />
     </>
   )
 }
