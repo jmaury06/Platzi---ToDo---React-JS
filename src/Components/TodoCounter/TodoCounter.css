@@ -1,5 +1,9 @@
-h1 {
+.wrap-todo-counter {
+  margin: 48px 0;
+}
+
+.wrap-todo-counter h1 {
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 48px;
+  color: gray;
 }

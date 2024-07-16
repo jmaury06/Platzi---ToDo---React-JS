@@ -62,7 +62,7 @@ export { AppContext, AppProvider }
 
 // const DEFAULTTODOS = [
 //   { text: 'learn english', completed: false },
-//   { text: 'learn frontend', completed: false },
+//   { text: 'learn frontend', completed: false }, 
 //   { text: 'learn backend', completed: false },
 //   { text: 'learn loquesea', completed: true },
 //   { text: 'learn kitchen', completed: false },
