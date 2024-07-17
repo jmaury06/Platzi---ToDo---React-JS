@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/curso-react-create-todo/static/css/main.c71d694e.css",
+    "main.js": "/curso-react-create-todo/static/js/main.b0517718.js",
+    "index.html": "/curso-react-create-todo/index.html",
+    "main.c71d694e.css.map": "/curso-react-create-todo/static/css/main.c71d694e.css.map",
+    "main.b0517718.js.map": "/curso-react-create-todo/static/js/main.b0517718.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c71d694e.css",
+    "static/js/main.b0517718.js"
+  ]
+}
