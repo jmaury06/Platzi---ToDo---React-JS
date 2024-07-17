@@ -12,7 +12,7 @@ import { CreateTaskForm } from './Components/Forms/CreateTaskForm'
 import Modal from 'react-modal'
 
 const AppUI = () => {
-  const { openModal, addNewTodo, setIsModalOpen, loading, error, searchedTodos, removeTodo, toggleComplete } = useContext(AppContext)
+  const { openModal, setIsModalOpen, loading, error, searchedTodos, removeTodo, toggleComplete } = useContext(AppContext)
 
   const customStyles = {
     content: {
@@ -23,6 +23,10 @@ const AppUI = () => {
       width: '90%',
       maxWidth: '400px',
       transform: 'translate(-50%, -50%)',
+      backgroundColor: 'gray',
+    },
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.75)',
     },
   };
 
@@ -52,11 +56,9 @@ const AppUI = () => {
         style={customStyles}
         contentLabel="Example Modal"
         onRequestClose={() => setIsModalOpen(false)}
+        shouldCloseOnOverlayClick={true}
       >
-        <CreateTaskForm
-          addTodo={addNewTodo}
-          onClose={() => setIsModalOpen(false)}
-        />
+        <CreateTaskForm />
       </Modal>
     </>
   )

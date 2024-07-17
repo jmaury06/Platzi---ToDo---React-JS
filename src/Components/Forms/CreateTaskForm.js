@@ -1,34 +1,55 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Forms.css'
+import { AppContext } from '../../Context';
 
-export const CreateTaskForm = ({ addTodo, onClose }) => {
+export const CreateTaskForm = () => {
+  const { addNewTodo, setIsModalOpen } = useContext(AppContext)
   const [newTodoText, setNewTodoText] = useState('');
+
+  const handleChange = (e) => {
+    setNewTodoText(e.target.value)
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false)
+    setNewTodoText('');
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodo({
+    addNewTodo({
       text: newTodoText,
       completed: false
     });
-    setNewTodoText('');
+    handleClose()
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.stopPropagation();
+      handleSubmit(e)
+    }
   };
 
   return (
-    <>
+    <div className='form-create-task'>
       <h2>Create New Task</h2>
-      <span className="close" onClick={onClose}>&times;</span>
       <form onSubmit={handleSubmit}>
         <label>
           Escriba la nueva tarea:
           <input
             type="text"
             value={newTodoText}
-            onChange={(e) => setNewTodoText(e.target.value)}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
             required
           />
         </label>
-        <button type="submit">Submitir</button>
+        <div className='wrap-buttons'>
+          <button className='close-button' onClick={handleClose}>CANCEL</button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
-    </>
+    </div>
   )
 }
