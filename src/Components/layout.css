@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Reset margin and padding for all elements */
 * {
     margin: 0;
@@ -6,8 +10,5 @@
 }
 
 body {
-    background-color: #151515;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
+    background-color: #1E293B;
 }

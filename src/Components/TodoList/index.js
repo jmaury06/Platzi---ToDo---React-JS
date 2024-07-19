@@ -1,11 +1,19 @@
-import './TodoList.css'
-
 function TodoList({ children }) {
   return (
-    <ul>
+    <ul className='
+      flex 
+      flex-col 
+      w-3/6 
+      m-auto 
+      items-center 
+      list-none 
+      gap-y-2 
+      max-h-[570px] 
+      overflow-y-auto
+    '>
       {children}
     </ul>
   )
 }
 
-export default TodoList
+export default TodoList;

@@ -16,14 +16,16 @@ const AppUI = () => {
 
   const customStyles = {
     content: {
+
       top: '50%',
       left: '50%',
       right: 'auto',
       bottom: 'auto',
-      width: '90%',
-      maxWidth: '400px',
+      width: '100%',
+      maxWidth: '450px',
       transform: 'translate(-50%, -50%)',
-      backgroundColor: 'gray',
+      backgroundColor: 'rgba(100, 100, 100, 0)',
+      border: 'none'
     },
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.75)',
@@ -31,36 +33,43 @@ const AppUI = () => {
   };
 
   return (
-    <>
-      <TodoCounter />
-      <TodoSearch />
-      <TodoList>
-        {loading && <TodoSkeleton />}
-        {error && <TodoError />}
-        {!loading && searchedTodos.length === 0 && <EmptyTodos />}
-        {!loading && searchedTodos.length && searchedTodos.map((todo, index) => {
-          const { text, completed } = todo
-          return (
-            <TodoItem
-              index={index}
-              text={text}
-              completed={completed}
-              removeTask={removeTodo}
-              taskCompleted={toggleComplete} />
-          )
-        })}
-      </TodoList>
-      <CreateTodoButton />
-      <Modal
-        isOpen={openModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-        onRequestClose={() => setIsModalOpen(false)}
-        shouldCloseOnOverlayClick={true}
-      >
+    <div className='flex w-full h-[100vh] justify-around items-center'>
+      <div className='hidden md:block w-full max-w-[400px]'>
         <CreateTaskForm />
-      </Modal>
-    </>
+      </div>
+
+      <div className='h-5/6 w-3/6'>
+        <TodoCounter />
+        <TodoSearch />
+
+        <TodoList>
+          {loading && <TodoSkeleton />}
+          {error && <TodoError />}
+          {!loading && searchedTodos.length === 0 && <EmptyTodos />}
+          {!loading && searchedTodos.length && searchedTodos.map((todo, index) => {
+            const { text, completed } = todo
+            return (
+              <TodoItem
+                index={index}
+                text={text}
+                completed={completed}
+                removeTask={removeTodo}
+                taskCompleted={toggleComplete} />
+            )
+          })}
+        </TodoList>
+        <CreateTodoButton />
+        <Modal
+          isOpen={openModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+          onRequestClose={() => setIsModalOpen(false)}
+          shouldCloseOnOverlayClick={true}
+        >
+          <CreateTaskForm isModal />
+        </Modal>
+      </div>
+    </div>
   )
 }
 
