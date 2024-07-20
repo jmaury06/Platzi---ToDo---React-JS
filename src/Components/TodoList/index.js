@@ -3,7 +3,8 @@ function TodoList({ children }) {
     <ul className='
       flex 
       flex-col 
-      w-3/6 
+      w-5/6
+      md:w-3/6 
       m-auto 
       items-center 
       list-none 

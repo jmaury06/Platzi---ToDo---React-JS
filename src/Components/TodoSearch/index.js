@@ -16,7 +16,7 @@ function TodoSearch() {
         placeholder='filter by text'
         value={searchValue}
         onChange={handleChange}
-        className='flex w-3/6 text-lg text-slate-600 p-2 rounded-md outline-none shadow-md shadow-slate-400/70' />
+        className='flex w-5/6 md:w-3/6 text-lg text-slate-600 p-2 rounded-md outline-none shadow-md shadow-slate-400/70' />
     </div>
 
   )

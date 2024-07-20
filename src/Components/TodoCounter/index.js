@@ -31,7 +31,7 @@ function TodoCounter() {
     <div className='flex justify-center items-center py-8'>
       {isExploding && <ConfettiExplosion />}
 
-      <h1 className='text-lg md:text-2xl font-bold text-slate-300'>
+      <h1 className='text-xl md:text-2xl font-bold text-slate-300'>
         Has completado <span className={`${completedTodos > 0 && 'text-cyan-300'}`}>{completedTodos}</span> de {totalTodos} TODOS
       </h1>
     </div>
