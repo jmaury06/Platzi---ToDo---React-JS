@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../../Context';
 import Button from '../chore/Button';
+import { toast, Bounce } from 'react-toastify';
 
 export const CreateTaskForm = ({ isModal }) => {
   const { addNewTodo, setIsModalOpen } = useContext(AppContext)
@@ -21,6 +22,17 @@ export const CreateTaskForm = ({ isModal }) => {
       text: newTodoText,
       completed: false
     });
+    toast.success('The task has been created successfully', {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
     handleClose()
   };
 
@@ -32,7 +44,7 @@ export const CreateTaskForm = ({ isModal }) => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center p-6 bg-slate-400/60 size-full rounded-xl'>
+    <div className='flex flex-col items-center justify-center p-6 bg-slate-600 md:bg-slate-400/60 size-full rounded-xl md:max-w-[400px] md:m-auto'>
       <h2 className='text-white text-2xl'> Create a New Task</h2>
       <form onSubmit={handleSubmit} className='flex flex-col mt-4 w-full space-y-6'>
         <label>

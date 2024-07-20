@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react'
 import useLocalStorage from '../Hooks/useLocalStorage'
+import { toast, Bounce } from 'react-toastify';
 
 const AppContext = createContext()
 
@@ -24,6 +25,16 @@ const AppProvider = ({ children }) => {
     const newArray = copyTodoList.filter(item => item.text !== value)
     setTodos(newArray);
     setIsModalOpen(false);
+    toast.warning('The task has been removed', {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      theme: "dark",
+      transition: Bounce,
+    });
   };
 
   const toggleComplete = (index) => {
@@ -59,14 +70,3 @@ const AppProvider = ({ children }) => {
 }
 
 export { AppContext, AppProvider }
-
-// const DEFAULTTODOS = [
-//   { text: 'learn english', completed: false },
-//   { text: 'learn frontend', completed: false }, 
-//   { text: 'learn backend', completed: false },
-//   { text: 'learn loquesea', completed: true },
-//   { text: 'learn kitchen', completed: false },
-// ]
-
-// localStorage.setItem('TODOS_V1', DEFAULTTODOS)
-// localStorage.removeItem('TODOS_V1')

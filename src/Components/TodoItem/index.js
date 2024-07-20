@@ -12,7 +12,6 @@ function TodoItem({ index, text, completed, removeTask, taskCompleted }) {
         ${!completed ? 'bg-slate-600/60' : 'bg-slate-300/30'} 
         ${!completed ? 'text-slate-300 ' : 'text-cyan-300/50'} 
         rounded-lg 
-        
         p-2
         gap-y-4
       `}>

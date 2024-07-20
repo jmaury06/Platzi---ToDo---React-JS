@@ -34,16 +34,15 @@ const AppUI = () => {
 
   return (
     <div className='flex w-full h-[100vh] justify-around items-center'>
-      <div className='hidden md:block w-full max-w-[400px]'>
+      <div className='hidden md:flex md:w-3/6'>
         <CreateTaskForm />
       </div>
 
-      <div className='h-5/6 w-3/6'>
+      <div className='h-5/6 w-full'>
         <TodoCounter />
         <TodoSearch />
-
         <TodoList>
-          {loading && <TodoSkeleton />}
+          {loading && <><TodoSkeleton /><TodoSkeleton /><TodoSkeleton /></>}
           {error && <TodoError />}
           {!loading && searchedTodos.length === 0 && <EmptyTodos />}
           {!loading && searchedTodos.length && searchedTodos.map((todo, index) => {
