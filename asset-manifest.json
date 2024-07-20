@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/curso-react-create-todo/static/css/main.c71d694e.css",
-    "main.js": "/curso-react-create-todo/static/js/main.b0517718.js",
+    "main.css": "/curso-react-create-todo/static/css/main.e0f2d231.css",
+    "main.js": "/curso-react-create-todo/static/js/main.a057ea46.js",
     "index.html": "/curso-react-create-todo/index.html",
-    "main.c71d694e.css.map": "/curso-react-create-todo/static/css/main.c71d694e.css.map",
-    "main.b0517718.js.map": "/curso-react-create-todo/static/js/main.b0517718.js.map"
+    "main.e0f2d231.css.map": "/curso-react-create-todo/static/css/main.e0f2d231.css.map",
+    "main.a057ea46.js.map": "/curso-react-create-todo/static/js/main.a057ea46.js.map"
   },
   "entrypoints": [
-    "static/css/main.c71d694e.css",
-    "static/js/main.b0517718.js"
+    "static/css/main.e0f2d231.css",
+    "static/js/main.a057ea46.js"
   ]
 }
